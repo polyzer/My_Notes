@@ -1,3 +1,9 @@
 Использовать для текста отдельные <div>, <span> элементы. Иначе при записи портятся элементы и их обработчики;
-При использовании AJAX использоваться параметр request.setRequestHeader("Content-Type", "Some_Content_Type");
-вместо Some_Content_Type использовать application/x-www-form-urlencoded, application/json.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+При использовании AJAX использоваться параметр request.setRequestHeader("Content-Type", "Some_Content_Type"),
+вместо Some_Content_Type использовать application/x-www-form-urlencoded, application/json;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DOM: Чтобы менять дочерние элементы стоит использовать добавление текущего дочернего элемента в другой (допустим,
+в body) после чего осуществлять добавление в целевой нужного нам элемента:
+  document.body.appendChild(PrevElement);// убираем элемент из DescriptionDiv в body.
+  DescriptionDiv.appendChild(CurrentElement);// добавляем в Description новый элемент.
