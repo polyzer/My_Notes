@@ -9,3 +9,7 @@ DOM: Чтобы менять дочерние элементы стоит исп
   DescriptionDiv.appendChild(CurrentElement);// добавляем в Description новый элемент.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Collada .dae не может хранить символы &;. и одни цифры!
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Создаваемым через document.createElement объектам устанавливать свойства чере setAttribute:
+var unit_div = document.createElement("div");
+unit_div.setAttribute("class", "lesson_part_unit_div clear_fix");
