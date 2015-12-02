@@ -24,5 +24,5 @@ Three.js ColladaLoader возвращает объект коллада, в ко
 		VK.api("users.get", {"user_ids": ids_str}, function (data) {
 			// действия с полученными данными
   		data.response - работать с ним
-		
+		/// данные лежат в data.responze[0].first_name .. и тд
 		});
