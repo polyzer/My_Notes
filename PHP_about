@@ -7,3 +7,5 @@ mysql_query("SET SESSION collation_connection = 'utf8_general_ci'");
 $datas = json_decode($_POST["Datas"], true);
 обязательно в конце true - преобразование в ассоциативный массив!
 ----------------------------------------------------------------------
+если косячит json_decode (на хостленде такое), обрабатывать с помощью stripslashes
+$datas = json_decode(stripslashes($_POST["Datas"]), true);
