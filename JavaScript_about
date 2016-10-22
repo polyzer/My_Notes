@@ -34,3 +34,30 @@ Node.js При установке модуля нужно находиться �
 var PeerServer = require("peer").PeerServer;
 то для установки модуля peer нужно делать npm install peer в директории, в которой лежит фаил, из которого
 мы делаем require("peer");
+//////////////////////////////////////////////////////////////////////////////////////
+!!!!!!!!!!!Очередная странность языка Javascript!!!!!!!!
+// ВОТ ЭТОТ КОД НЕ РАБОТАЛ!!!
+_QBorgGame.prototype.updateGameProcess = function ()
+{
+		this.Renderer.render(this.Scene, this.Camera);
+		this.LocalPlayer.update();
+
+	  requestAnimationFrame(this.updateGameProcessBF);
+}
+// НО РАБОТАЕТ ВОТ ЭТО:
+_QBorgGame.prototype.updateGameProcess = function ()
+{
+		this.Renderer.render(this.Scene, this.Camera);
+		this.LocalPlayer.update();
+
+	  requestAnimationFrame(this.updateGameProcessBF);
+}
+
+_QBorgGame.prototype.updateRemote = function ()
+{
+		for(i=0;i<this.RemotePlayers.length; i++)
+	  {
+			this.RemotePlayers[i].update();
+		}
+}
+ВЫВОД: В Javascript если код не работат, то нужно нерабочий код изолировать в отдельную функцию!...
