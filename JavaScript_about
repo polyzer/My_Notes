@@ -52,15 +52,15 @@ _QBorgGame.prototype.updateGameProcess = function ()
 {
 		this.Renderer.render(this.Scene, this.Camera);
 		this.LocalPlayer.update();
-
+                this.updateRemotePlayers();
 	  requestAnimationFrame(this.updateGameProcessBF);
 }
 
-_QBorgGame.prototype.updateRemote = function ()
+_QBorgGame.prototype.updateRemotePlayers = function ()
 {
-	  for(i=0;i<this.RemotePlayers.length; i++)
+	  for(var i=0;i<this.RemotePlayers.length; i++)
 	  {
 	    this.RemotePlayers[i].update();
 	  }
 }
-ВЫВОД: В Javascript если код не работат, то нужно нерабочий код изолировать в отдельную функцию!...
+ВЫВОД: В Javascript ВСЕ ПЕРЕМЕННЫЕ НУЖНО ОБЪЯВЛЯТЬ С var!!!! Иначе - они считаются глобальными!...
