@@ -39,10 +39,13 @@ var PeerServer = require("peer").PeerServer;
 // ВОТ ЭТОТ КОД НЕ РАБОТАЛ!!!
 _QBorgGame.prototype.updateGameProcess = function ()
 {
-		this.Renderer.render(this.Scene, this.Camera);
-		this.LocalPlayer.update();
-
-	  requestAnimationFrame(this.updateGameProcessBF);
+	this.Renderer.render(this.Scene, this.Camera);
+	this.LocalPlayer.update();
+	for(i=0;i<this.RemotePlayers.length; i++)
+	{
+		this.RemotePlayers[i].update();
+	}
+	requestAnimationFrame(this.updateGameProcessBF);
 }
 // НО РАБОТАЕТ ВОТ ЭТО:
 _QBorgGame.prototype.updateGameProcess = function ()
@@ -55,9 +58,9 @@ _QBorgGame.prototype.updateGameProcess = function ()
 
 _QBorgGame.prototype.updateRemote = function ()
 {
-		for(i=0;i<this.RemotePlayers.length; i++)
+	  for(i=0;i<this.RemotePlayers.length; i++)
 	  {
-			this.RemotePlayers[i].update();
-		}
+	    this.RemotePlayers[i].update();
+	  }
 }
 ВЫВОД: В Javascript если код не работат, то нужно нерабочий код изолировать в отдельную функцию!...
