@@ -76,3 +76,45 @@ _QBorgGame.prototype.updateRemotePlayers = function ()
 	  }
 }
 ВЫВОД: В Javascript ВСЕ ПЕРЕМЕННЫЕ НУЖНО ОБЪЯВЛЯТЬ С var!!!! Иначе - они считаются глобальными!...
+------------------------------------------------------------------------------------
+Peer.js Server: ЕСЛИ НЕ РАБОТАЕТ https
+Hello! I solved this problem!
+1) You must paste in your chrome:
+
+chrome://flags/#allow-insecure-localhost
+
+And click Enable
+2) You must use "https://" in url.
+3)There is my code that works!
+******************************
+*****************************************
+var express = require("express");
+var fs = require("fs");
+var https = require("https");
+var ExpressPeerServer = require("peer").ExpressPeerServer;
+var bodyParser = require("body-parser");
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+var jsonParser = bodyParser.json();
+var const_and_funcs = require("./vk_space_chat_constants_and_general_functions.js");
+
+var credentials = {
+    key: fs.readFileSync('/etc/apache2/ssl/apache.key'),
+    cert: fs.readFileSync('/etc/apache2/ssl/apache.crt')	
+ }
+
+
+var app = express();
+var httpsServer = https.createServer(credentials, app).listen(const_and_funcs.PEER_PORT_ADDR);
+//var server = app.listen(const_and_funcs.PEER_PORT_ADDR);
+//app.listen(const_and_funcs.PEER_PORT_ADDR);
+
+var options = {
+	debug: true,
+};
+
+var peerServer = ExpressPeerServer(httpsServer, options);
+//var peerServer = ExpressPeerServer(server, options);
+app.use(const_and_funcs.PEER_PATH_ADDR, peerServer);
+app.use(jsonParser);
+app.use(urlencodedParser);
+
