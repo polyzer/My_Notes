@@ -1,0 +1,4 @@
+Google Chrome
+***************************
+запустить хром без проверки ssl сертификата для домена/ip:
+--unsafely-treat-insecure-origin-as-secure="example.com"
