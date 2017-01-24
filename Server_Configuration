@@ -1,0 +1,16 @@
+Ubuntu 14.04
+--
+sudo adduser username
+--
+sudo apt-get install lamp-server^
+--
+sudo apt-get install wget
+--
+wget https://nodejs.org/dist/v6.9.4/node-v6.9.4-linux-x64.tar.xz 
+sudo apt-get install xz-utils 
+sudo tar -C /usr/local --strip-components 1 -xJf node-v6.9.4-linux-x64.tar.xz 
+ls -l /usr/local/bin/node
+ls -l /usr/local/bin/npm
+sudo ln -s /usr/local/bin/node /usr/sbin/node6
+--
+
