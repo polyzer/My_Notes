@@ -13,4 +13,20 @@ ls -l /usr/local/bin/node
 ls -l /usr/local/bin/npm
 sudo ln -s /usr/local/bin/node /usr/sbin/node6
 --
-
+sudo apt-get install phpmyadmin
+sudo ln -s /usr/share/phpmyadmin/ /var/www/html/phpmyadmin
+sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+sudo a2enconf phpmyadmin
+sudo /etc/init.d/apache2 reload
+--
+sudo nano /usr/share/phpmyadmin/.htaccess
+Enter there:
+AuthType Basic
+AuthName "Restricted Files"
+AuthUserFile /etc/phpmyadmin/.htpasswd
+Require valid-user
+--
+sudo apt-get install apache2-utils
+sudo htpasswd -c /etc/phpmyadmin/.htpasswd username
+// sudo htpasswd /etc/phpmyadmin/.htpasswd additionaluser
+// http://domain_name_or_IP/phpmyadmin
